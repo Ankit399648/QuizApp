@@ -12,7 +12,32 @@ import lombok.Data;
 public class Quiz {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Integer id;
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public List<Questions> getQuestions() {
+		return questions;
+	}
+
+	public void setQuestions(List<Questions> questions) {
+		this.questions = questions;
+	}
+
 	String title;
 	
 	@ManyToAny
