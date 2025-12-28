@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Ankit.QuizApp.Model.QuestionsWrapper;
+import com.Ankit.QuizApp.Model.Quiz;
 import com.Ankit.QuizApp.Model.Response;
 import com.Ankit.QuizApp.Service.QuizService;
 
@@ -28,10 +29,22 @@ public class QuizController {
 		return quizService.createQuiz(nQ, diff, title);
 	}
 	
+	@GetMapping("getAllQuizTitle")
+	public ResponseEntity<List<Quiz>> getAllQuizTitle()
+	{
+		return quizService.getAllQuizTitle();
+	}
+	
 	@GetMapping("getQuiz/{id}")
 	public ResponseEntity<List<QuestionsWrapper>> getQuiz(@PathVariable("id") Integer id)
 	{
 		return quizService.getQuizQuestions(id);
+	}
+	
+	@GetMapping("deleteQuiz/{id}")
+	public ResponseEntity<String> deleteQuiz(@PathVariable("id") Integer id)
+	{
+		return quizService.deleteQuiz(id);
 	}
 	
 	@PostMapping("submit/{id}")
